@@ -23,12 +23,14 @@
     <Content Include="Common\Material\1.0.2\angular-material.css" />
     <Content Include="Common\Material\1.0.2\angular-material.layouts.css" />
     <Content Include="Common\Material\1.0.2\angular-material.min.js" />
+    <Content Include="Common\Model\Model.js" />
     <Content Include="Common\Services\CommonFunctionsService.js" />
     <Content Include="Common\Underscore\1.8.3\underscore-min.js" />
     <Content Include="index.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Common\Model\Model.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
