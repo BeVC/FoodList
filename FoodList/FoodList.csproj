@@ -26,7 +26,11 @@
     <Content Include="Common\Model\Model.js" />
     <Content Include="Common\Services\CommonFunctionsService.js" />
     <Content Include="Common\Underscore\1.8.3\underscore-min.js" />
+    <Content Include="Components\FoodList\FoodList.html" />
+    <Content Include="Components\FoodList\FoodListController.js" />
     <Content Include="index.html" />
+    <Content Include="indexController.js" />
+    <Content Include="initModule.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -39,7 +43,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Components\" />
     <Folder Include="Style\" />
   </ItemGroup>
   <ItemGroup>

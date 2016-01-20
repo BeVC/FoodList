@@ -6,15 +6,44 @@
     <title>FoodList App</title>
 
     <!--Material-->
-    <link rel="stylesheet" href="Common/Material/1.0.2/angular-material.css"/>
-    <link rel="stylesheet" href="Common/Material/1.0.2/angular-material.layouts.css"/>
+    <link rel="stylesheet" href="Common/Material/1.0.2/angular-material.css" />
+    <link rel="stylesheet" href="Common/Material/1.0.2/angular-material.layouts.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body>
+<body ng-app="FoodList">
+    <div layout="row" flex>
+        <div flex layout="column" ng-controller="IndexController as indexCtrl">
+            <md-toolbar layout="row">
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Settings">
+                        <i class="material-icons">menu</i>
+                    </md-button>
+                    <h2>
+                        <span>Toolbar with Icon Buttons</span>
+                    </h2>
+                    <md-button class="md-icon-button" aria-label="More">
+                        <i class="material-icons">more_vert</i>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </div>
+    </div>
+
+    <div layout="row" flex>
+        <div flex>
+            <ng-view></ng-view>
+        </div>
+    </div>
+
 
 
     <!--Angular-->
     <script src="Common/Angular/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 
     <!--Angular Material-->
     <script src="Common/Material/1.0.2/angular-material.min.js"></script>
@@ -28,5 +57,11 @@
 
     <!--Model-->
     <script src="Common/Model/Model.js"></script>
+
+    <!--Module-Init-->
+    <!--<script src="initModule.js"></script>-->
+    <!--Components-->
+    <script src="indexController.js"></script>
+    <script src="Components/FoodList/FoodListController.js"></script>
 </body>
 </html>
