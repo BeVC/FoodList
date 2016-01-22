@@ -28,6 +28,8 @@
     <Content Include="Common\Underscore\1.8.3\underscore-min.js" />
     <Content Include="Components\FoodList\FoodList.html" />
     <Content Include="Components\FoodList\FoodListController.js" />
+    <Content Include="Components\FoodList\NewFoodListController.js" />
+    <Content Include="Components\FoodList\NewFoodListItemTemplate.html" />
     <Content Include="index.html" />
     <Content Include="indexController.js" />
     <Content Include="initModule.js" />

@@ -4,11 +4,14 @@
     angular.module("FoodList")
         .controller("FoodListController", FoodListController);
 
-    FoodListController.$inject = [];
+    FoodListController.$inject = ["$mdDialog"];
 
-    function FoodListController() {
+    function FoodListController($mdDialog) {
         var vm = this;
 
+        vm.btnOpenFoodListItemForm = btnOpenFoodListItemForm;
+
+        //init
         vm.todos = [
             {
                 what: "one",
@@ -25,6 +28,25 @@
                 who: "us",
                 when: "later"
             }
-        ]
+        ];
+
+        //functions
+        function btnOpenFoodListItemForm(ev) {
+            $mdDialog.show({
+                controller: "NewFoodListController",
+                controllerAs: "newFoodListCtrl",
+                templateUrl: "/Components/FoodList/NewFoodListItemTemplate.html",
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: false,
+                fullscreen: true
+            })
+                .then(function (answer) {
+
+                }, function () {
+
+                })
+        }
     }
+
 })()
