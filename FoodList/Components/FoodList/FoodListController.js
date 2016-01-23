@@ -8,27 +8,29 @@
 
     function FoodListController($mdDialog) {
         var vm = this;
+        vm.foodStorageCol = [];
 
         vm.btnOpenFoodListItemForm = btnOpenFoodListItemForm;
+        vm.init = init();
 
         //init
-        vm.todos = [
-            {
-                what: "one",
-                who: "me",
-                when: "now"
-            },
-            {
-                what: "two",
-                who: "you",
-                when: "soon"
-            },
-            {
-                what: "three",
-                who: "us",
-                when: "later"
-            }
-        ];
+        //vm.todos = [
+        //    {
+        //        what: "one",
+        //        who: "me",
+        //        when: "now"
+        //    },
+        //    {
+        //        what: "two",
+        //        who: "you",
+        //        when: "soon"
+        //    },
+        //    {
+        //        what: "three",
+        //        who: "us",
+        //        when: "later"
+        //    }
+        //];
 
         //functions
         function btnOpenFoodListItemForm(ev) {
@@ -42,11 +44,14 @@
                 fullscreen: true
             })
                 .then(function (answer) {
-
+                    var foodStorage = answer;
+                    vm.foodStorageCol.push(foodStorage);
                 }, function () {
-
-                })
+                    vm.status = "You cancelled the dialog";
+                });
         }
+
+        function init() { }
     }
 
 })()

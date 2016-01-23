@@ -9,6 +9,7 @@
     function NewFoodListController($mdDialog,$q) {
         var vm = this;
         vm.foodStorage = null;
+        vm.locationCol = [{ name: "frigo1" }, { name: "frigo2" }, { name: "berging" }];
 
         vm.btnSaveFoodListItem = btnSaveFoodListItem;
         vm.init = init;
@@ -31,7 +32,13 @@
         };
 
         function btnSaveFoodListItem() {
-            
+            if (vm.newFoodListItemForm.$valid) {
+                if (vm.newFoodListItemForm.$dirty) {
+                    var foodStorageForBackend = FoodStorage.createCopy(vm.foodStorage, true);
+
+                    vm.answer(foodStorageForBackend);
+                }
+            }
         }
 
         function init() {

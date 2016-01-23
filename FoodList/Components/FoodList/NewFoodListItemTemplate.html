@@ -26,7 +26,7 @@
                 <md-input-container class="md-block">
                     <label>Location</label>
                     <md-select ng-model="newFoodListCtrl.foodStorage.location">
-                        <md-option></md-option>
+                        <md-option ng-repeat="loc in newFoodListCtrl.locationCol" value="{{loc.name}}">{{loc.name}}</md-option>
                     </md-select>
                 </md-input-container>
                 <md-datepicker ng-model="newFoodListCtrl.foodStorage.dateStorage" md-placeholder="Enter date">

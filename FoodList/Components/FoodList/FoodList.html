@@ -1,11 +1,11 @@
 ﻿<div layout="column">
     <md-content>
         <md-list>
-            <md-list-item class="md-3-line" ng-repeat="item in foodListCtrl.todos">
+            <md-list-item class="md-3-line" ng-repeat="item in foodListCtrl.foodStorageCol track by $index">
                 <div class="md-list-item-text" layout="column">
-                    <h3>{{ item.who }}</h3>
-                    <h4>{{ item.what }}</h4>
-                    <div>{{ item.when }}</div>
+                    <h3>{{ item.name }} in {{ item.location }}</h3>
+                    <h4>Hoeveelheid/Porties: {{ item.amount }}</h4>
+                    <p>{{item.dateStorage|date:'dd-MM-yyyy'}}{{item.present}}</p>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>
