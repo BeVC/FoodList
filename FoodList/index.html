@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=400, initial-scale=1">
+
     <title>FoodList App</title>
 
     <!--Material-->
@@ -13,8 +15,8 @@
 </head>
 <body ng-app="FoodList">
     <div layout="row" flex>
-        <div flex layout="column" ng-controller="IndexController as indexCtrl">
-            <md-toolbar layout="row">
+        <div flex layout-sm="column" ng-controller="IndexController as indexCtrl">
+            <md-toolbar layout-sm="row">
                 <div class="md-toolbar-tools">
                     <md-button class="md-icon-button" aria-label="Settings">
                         <i class="material-icons">menu</i>
@@ -30,7 +32,7 @@
         </div>
     </div>
 
-    <div layout="row" flex>
+    <div layout-sm="row" flex>
         <div flex>
             <ng-view></ng-view>
         </div>
