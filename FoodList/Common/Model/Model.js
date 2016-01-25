@@ -3,6 +3,7 @@
         this.name = "";
         this.location = "";
         this.amount = 0;
+        this.persons = 1;
         this.dateStorage = new Date();
         this.present = true;
         this.createdAt = new Date();
@@ -23,6 +24,7 @@
         to.name = from.name;
         to.location = from.location;
         to.amount = from.amount;
+        to.persons = from.persons;
         to.location = from.location;
         to.dateStorage = from.dateStorage;
         to.present = from.present;
