@@ -33,6 +33,7 @@
     <Content Include="index.html" />
     <Content Include="indexController.js" />
     <Content Include="initModule.js" />
+    <Content Include="Style\app.css" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -45,9 +46,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Style\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="Common\Model\Model.ts" />
   </ItemGroup>

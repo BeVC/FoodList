@@ -38,6 +38,7 @@
          to.location = from.location;
          to.amount = from.amount;
          to.persons = from.persons;
+
          to.location = from.location;
          to.dateStorage = from.dateStorage;
          to.present = from.present;

@@ -4,7 +4,7 @@
             <md-list-item class="md-3-line" ng-repeat="item in foodListCtrl.foodStorageCol track by $index">
                 <div class="md-list-item-text" layout="column">
                     <h3>{{ item.name }} in {{ item.location }}</h3>
-                    <h4>Hoeveelheid/Porties: {{ item.amount }}</h4>
+                    <h4>{{ item.amount }}<span ng-if="item.amount>20">g/ml</span>&emsp;<span ng-if="item.persons>0">{{ item.persons }}</span><span ng-if="item.persons==1">persoon</span><span ng-if="item.persons>1">personen</span></h4>
                     <p>{{item.dateStorage|date:'dd-MM-yyyy'}}</p>
                 </div>
                 <md-divider></md-divider>
