@@ -11,7 +11,9 @@
         vm.foodStorageCol = [];
 
         vm.btnOpenFoodListItemForm = btnOpenFoodListItemForm;
-        vm.init = init();
+        vm.init = init;
+        vm.removeFoodStorageItem = removeFoodStorageItem;
+        vm.editFoodStorageItem = editFoodStorageItem;
 
         //init
         //vm.todos = [
@@ -52,6 +54,14 @@
         }
 
         function init() { }
+
+        function removeFoodStorageItem(foodStorage,index, ev) {
+            vm.foodStorageCol.splice(index, 1);
+        }
+
+        function editFoodStorageItem(foodStorage,index, ev) {
+            alert("edit");
+        }
     }
 
 })()
