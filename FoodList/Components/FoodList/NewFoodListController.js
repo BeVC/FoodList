@@ -9,7 +9,7 @@
     function NewFoodListController($mdDialog,$q) {
         var vm = this;
         vm.foodStorage = null;
-        vm.locationCol = [{ name: "frigo1" }, { name: "frigo2" }, { name: "berging" }];
+        vm.locationCol = [{ name: "frigo1" }, { name: "diepvries" }, { name: "berging" }];
 
         vm.btnSaveFoodListItem = btnSaveFoodListItem;
         vm.init = init;

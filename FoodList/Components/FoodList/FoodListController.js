@@ -4,9 +4,9 @@
     angular.module("FoodList")
         .controller("FoodListController", FoodListController);
 
-    FoodListController.$inject = ["$mdDialog", "Azureservice"];
+    FoodListController.$inject = ["$mdDialog", "$q", "Azureservice"];
 
-    function FoodListController($mdDialog, Azureservice) {
+    function FoodListController($mdDialog, $q, Azureservice) {
         var vm = this;
         vm.foodStorageCol = [];
 
@@ -16,23 +16,9 @@
         vm.editFoodStorageItem = editFoodStorageItem;
 
         //init
-        //vm.todos = [
-        //    {
-        //        what: "one",
-        //        who: "me",
-        //        when: "now"
-        //    },
-        //    {
-        //        what: "two",
-        //        who: "you",
-        //        when: "soon"
-        //    },
-        //    {
-        //        what: "three",
-        //        who: "us",
-        //        when: "later"
-        //    }
-        //];
+        vm.init().then(function(initResults) {
+            vm.foodStorageCol = initResults.foodStorageCol;
+        })
 
         //functions
         function btnOpenFoodListItemForm(ev) {
@@ -48,20 +34,41 @@
                 .then(function (answer) {
                     var foodStorage = answer;
 
-                    var foodStorageForBackend = FoodStorage.copyProperties(foodStorage, true);
+                    var foodStorageForBackend = FoodStorage.createCopy(foodStorage, true);
 
-                Azureservice.insert('foodStorage', foodStorageForBackend)
-                    .then(function(result) {
-                        vm.foodStorageCol.unshift(result);
-                    }, function(err) {
-                        console.error("Azure error " + err);
-                    });
+                    Azureservice.insert('foodStorage', foodStorageForBackend)
+                        .then(function (result) {
+                            vm.foodStorageCol.unshift(result);
+                        }, function (err) {
+                            console.error("Azure error " + err);
+                        });
                 }, function () {
                     vm.status = "You cancelled the dialog";
                 });
         }
 
-        function init() { }
+        function init() {
+            var deferred = $q.defer();
+
+            var promise1 = Azureservice.query("foodStorage", {
+                criteria: {
+                    present: true,
+                    isDeleted: false
+                }
+            });
+
+            $q.all([promise1])
+                .then(function (data) {
+                    var initResults = {
+                        foodStorageCol: data[0]
+                    }
+                    deferred.resolve(initResults);
+                }, function (err) {
+                    console.error("Azure error " + err);
+                });
+
+            return deferred.promise;
+        }
 
         function removeFoodStorageItem(foodStorage, index, ev) {
             if (typeof foodStorage.id !== "undefined" || foodStorage.id != null)
