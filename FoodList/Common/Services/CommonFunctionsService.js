@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('ArcheoDB')
+    angular.module('FoodList')
         .service("CommonFunctionsService", CommonFunctionsService);
 
     CommonFunctionsService.$inject = [];

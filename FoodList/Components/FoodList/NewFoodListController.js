@@ -4,9 +4,9 @@
     angular.module("FoodList")
         .controller("NewFoodListController", NewFoodListController);
 
-    NewFoodListController.$inject = ["$mdDialog","$q"];
+    NewFoodListController.$inject = ["$mdDialog","$q","CommonFunctionsService"];
 
-    function NewFoodListController($mdDialog,$q) {
+    function NewFoodListController($mdDialog,$q,CommonFunctionsService) {
         var vm = this;
         vm.foodStorage = null;
         vm.locationCol = [{ name: "frigo1" }, { name: "diepvries" }, { name: "berging" }];
@@ -34,6 +34,7 @@
         function btnSaveFoodListItem() {
             if (vm.newFoodListItemForm.$valid) {
                 if (vm.newFoodListItemForm.$dirty) {
+                    vm.foodStorage.id = CommonFunctionsService.createGuid();
                     var foodStorageForBackend = FoodStorage.createCopy(vm.foodStorage, true);
 
                     vm.answer(foodStorageForBackend);
