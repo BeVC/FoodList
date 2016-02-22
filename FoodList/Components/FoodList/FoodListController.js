@@ -18,7 +18,7 @@
         //init
         vm.init().then(function(initResults) {
             vm.foodStorageCol = initResults.foodStorageCol;
-        })
+        });
 
         //functions
         function btnOpenFoodListItemForm(ev) {
@@ -71,16 +71,28 @@
         }
 
         function removeFoodStorageItem(foodStorage, index, ev) {
-            if (typeof foodStorage.id !== "undefined" || foodStorage.id != null)
-                Azureservice.update({
-                    id: foodStorage.id,
-                    present: false
-                }).then(function () {
-                    vm.foodStorageCol.splice(index, 1);
-                }, function (err) {
-                    console.error("Azure error " + err);
-                });
-            else
+            if (typeof foodStorage.id !== "undefined" || foodStorage.id != null) {
+                if (foodStorage.amount > 1) {
+                    var newAmount = foodStorage.amount - 1;
+                    Azureservice.update("foodStorage", {
+                        id: foodStorage.id,
+                        amount: newAmount
+                    }).then(function (result) {
+                        vm.foodStorageCol[index].amount = result.amount;
+                    }, function (err) {
+                        console.error("Azure error " + err);
+                    });
+                } else {
+                    Azureservice.update("foodStorage", {
+                        id: foodStorage.id,
+                        present: false
+                    }).then(function () {
+                        vm.foodStorageCol.splice(index, 1);
+                    }, function (err) {
+                        console.error("Azure error " + err);
+                    });
+                }
+            } else
                 vm.foodStorageCol.splice(index, 1);
         }
 
