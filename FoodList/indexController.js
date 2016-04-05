@@ -14,12 +14,12 @@
             $urlRouterProvider.otherwise("/FoodList");
 
             $stateProvider
-            .state("FoodList", {
-                url: "/FoodList",
-                templateUrl: "Components/FoodList/FoodList.html",
-                controller: "FoodListController",
-                controllerAs: "foodListCtrl"
-            })
+                .state("FoodList", {
+                    url: "/FoodList",
+                    templateUrl: "Components/FoodList/FoodList.html",
+                    controller: "FoodListController",
+                    controllerAs: "foodListCtrl"
+                });
 
             /*$routeProvider
                 .when("/FoodList", {
