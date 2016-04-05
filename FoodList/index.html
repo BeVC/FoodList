@@ -8,8 +8,8 @@
     <title>FoodList App</title>
 
     <!--Material-->
-    <link rel="stylesheet" href="Common/Material/1.0.2/angular-material.css" />
-    <link rel="stylesheet" href="Common/Material/1.0.2/angular-material.layouts.css" />
+    <link rel="stylesheet" href="Common/Material/1.0.6/angular-material.css" />
+    <link rel="stylesheet" href="Common/Material/1.0.6/angular-material.layouts.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="Style/app.css" rel="stylesheet"/>
 
@@ -21,6 +21,9 @@
                 <div class="md-toolbar-tools">
                     <md-button class="md-icon-button" aria-label="Settings">
                         <i class="material-icons">menu</i>
+                        <!--<md-icon class="icon_home" aria-label="Home"></md-icon>-->
+                        <!--<i class="material-icons">&#xE87C;</i>-->
+                        <!--<md-icon md-svg-src="img/icons/android.svg"></md-icon>-->
                     </md-button>
                     <h2>
                         <span>Foodlist</span>
@@ -36,7 +39,8 @@
 
     <div layout-sm="row" flex>
         <div flex>
-            <ng-view></ng-view>
+            <!--<ng-view></ng-view>-->
+            <div ui-view></div>
         </div>
     </div>
 
@@ -49,8 +53,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 
+    <!--UI Router-->
+    <script src="Common/UIRouter/0.2.18/angular-ui-router.min.js"></script>
+
     <!--Angular Material-->
-    <script src="Common/Material/1.0.2/angular-material.min.js"></script>
+    <script src="Common/Material/1.0.6/angular-material.min.js"></script>
 
     <!--MobileServices to Azure-->
     <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.5.min.js"></script>

@@ -1,17 +1,27 @@
 ﻿(function () {
     "use strict";
 
-    angular.module("FoodList", ["azure-mobile-service.module", "ngMaterial", "ngRoute","ngAnimate" /*,"ngMessages"*/])
+    angular.module("FoodList", ["azure-mobile-service.module", "ngMaterial", "ngRoute", "ngAnimate" /*,"ngMessages"*/, "ui.router"])
         .constant("AzureMobileServiceClient", {
             API_URL: 'https://bvcmobsvc.azure-mobile.net/',
             API_KEY: 'YqFgVoowmudZcmgihjmOinsxxJTpdx92'
         })
-        .config(function($mdThemingProvider, $routeProvider) {
+        .config(function($mdThemingProvider, $stateProvider, $urlRouterProvider /*$routeProvider*/) {
             $mdThemingProvider.theme('default')
                 .primaryPalette('blue')
                 .accentPalette('amber');
 
-            $routeProvider
+            $urlRouterProvider.otherwise("/FoodList");
+
+            $stateProvider
+            .state("FoodList", {
+                url: "/FoodList",
+                templateUrl: "Components/FoodList/FoodList.html",
+                controller: "FoodListController",
+                controllerAs: "foodListCtrl"
+            })
+
+            /*$routeProvider
                 .when("/FoodList", {
                     templateUrl: "Components/FoodList/FoodList.html",
                     controller: "FoodListController",
@@ -19,7 +29,7 @@
                 })
                 .otherwise({
                     redirectTo: "/FoodList"
-                });
+                });*/
         })
         .run(function() {
 
