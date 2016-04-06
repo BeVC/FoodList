@@ -52,9 +52,18 @@
     angular.module("FoodList")
         .controller("IndexController", IndexController);
 
-    IndexController.$inject = [];
+    IndexController.$inject = ["WebApiService"];
 
-    function IndexController() {
+    function IndexController(WebApiService) {
         var vm = this;
+
+        vm.btnTest_Clicked = btnTest_Clicked;
+
+        function btnTest_Clicked() {
+            WebApiService.getTestString()
+            .then(function(result) {
+                result;
+            })
+        }
     }
 })()
