@@ -35,6 +35,8 @@
     <Content Include="Components\FoodList\FoodListController.js" />
     <Content Include="Components\FoodList\NewFoodListController.js" />
     <Content Include="Components\FoodList\NewFoodListItemTemplate.html" />
+    <Content Include="Components\Home\Home.html" />
+    <Content Include="Components\Home\HomeController.js" />
     <Content Include="index.html" />
     <Content Include="indexController.js" />
     <Content Include="initModule.js" />

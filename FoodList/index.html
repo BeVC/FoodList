@@ -17,19 +17,27 @@
 <body ng-app="FoodList">
     <div layout="row" flex>
         <div flex layout-sm="column" ng-controller="IndexController as indexCtrl">
+            <md-sidenav md-component-id="left" class="md-sidenav-left">
+                <md-content layout-padding>
+                    <md-button class="md-primary" ui-sref="FoodList" ng-click="indexCtrl.closeSideNavLeft()">
+                        Pantry
+                    </md-button>
+                </md-content>
+            </md-sidenav>
+
+
             <md-toolbar layout-sm="row">
                 <div class="md-toolbar-tools">
-                    <md-button class="md-icon-button" aria-label="Settings">
+                    <md-button class="md-icon-button" aria-label="Settings" ng-click="indexCtrl.toggleSideNavLeft()">
                         <i class="material-icons">menu</i>
-                        <!--<md-icon class="icon_home" aria-label="Home"></md-icon>-->
-                        <!--<i class="material-icons">&#xE87C;</i>-->
-                        <!--<md-icon md-svg-src="img/icons/android.svg"></md-icon>-->
                     </md-button>
+
+
                     <h2>
                         <span>Foodlist</span>
                     </h2>
                     <span flex></span>
-                    <md-button class="md-icon-button" aria-label="More" ng-click="indexCtrl.btnTest_Clicked()">
+                    <md-button class="md-icon-button" aria-label="More">
                         <i class="material-icons">more_vert</i>
                     </md-button>
                 </div>
@@ -74,6 +82,7 @@
     <!--<script src="initModule.js"></script>-->
     <!--Components-->
     <script src="indexController.js"></script>
+    <script src="Components/Home/HomeController.js"></script>
     <script src="Components/FoodList/FoodListController.js"></script>
     <script src="Components/FoodList/NewFoodListController.js"></script>
 

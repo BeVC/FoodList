@@ -6,12 +6,12 @@
             API_URL: 'https://bvcmobsvc.azure-mobile.net/',
             API_KEY: 'YqFgVoowmudZcmgihjmOinsxxJTpdx92'
         })
-        .config(function($mdThemingProvider, $stateProvider, $urlRouterProvider /*$routeProvider*/) {
+        .config(function ($mdThemingProvider, $stateProvider, $urlRouterProvider /*$routeProvider*/) {
             $mdThemingProvider.theme('default')
                 .primaryPalette('blue')
                 .accentPalette('amber');
 
-            $urlRouterProvider.otherwise("/FoodList");
+            $urlRouterProvider.otherwise("/Home");
 
             $stateProvider
                 .state("FoodList", {
@@ -19,7 +19,14 @@
                     templateUrl: "Components/FoodList/FoodList.html",
                     controller: "FoodListController",
                     controllerAs: "foodListCtrl"
+                })
+                .state("Home", {
+                    url: "/Home",
+                    templateUrl: "Components/Home/Home.html",
+                    controller: "HomeController",
+                    controllerAs: "homeCtrl"
                 });
+
 
             /*$routeProvider
                 .when("/FoodList", {
@@ -31,7 +38,7 @@
                     redirectTo: "/FoodList"
                 });*/
         })
-        .run(function() {
+        .run(function () {
 
         });
     //angular.module("FoodList").constant('AzureMobileServiceClient', {
@@ -52,18 +59,30 @@
     angular.module("FoodList")
         .controller("IndexController", IndexController);
 
-    IndexController.$inject = ["WebApiService"];
+    IndexController.$inject = ["$mdSidenav"];
 
-    function IndexController(WebApiService) {
+    function IndexController($mdSidenav) {
         var vm = this;
 
-        vm.btnTest_Clicked = btnTest_Clicked;
+        vm.toggleSideNavLeft = toggleSideNavLeft;
+        vm.closeSideNavLeft = closeSideNavLeft;
+        //init
 
-        function btnTest_Clicked() {
-            WebApiService.getTestString()
-            .then(function(result) {
-                result;
-            })
+        //functions
+        function toggleSideNavLeft() {
+            $mdSidenav('left').toggle();
         }
+
+        function closeSideNavLeft() {
+            $mdSidenav('left').close();
+        }
+        //vm.btnTest_Clicked = btnTest_Clicked;
+
+        //function btnTest_Clicked() {
+        //    WebApiService.getTestString()
+        //    .then(function (result) {
+        //        result;
+        //    })
+        //}
     }
 })()
