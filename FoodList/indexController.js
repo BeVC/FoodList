@@ -1,7 +1,7 @@
 ﻿(function () {
     "use strict";
 
-    angular.module("FoodList", ["azure-mobile-service.module", "ngMaterial", "ngRoute", "ngAnimate" /*,"ngMessages"*/, "ui.router"])
+    angular.module("FoodList", ["azure-mobile-service.module", "ngMaterial", "ngRoute", "ngAnimate" /*,"ngMessages"*/, "ui.router", "satellizer"])
         .constant("AzureMobileServiceClient", {
             API_URL: 'https://bvcmobsvc.azure-mobile.net/',
             API_KEY: 'YqFgVoowmudZcmgihjmOinsxxJTpdx92'
