@@ -21,6 +21,8 @@
     <Content Include="Common\Angular\1.4.8\angular.min.js" />
     <Content Include="Common\Angular\1.5.5\angular.min.js" />
     <Content Include="Common\Azure\angular-azure-mobile-service.js" />
+    <Content Include="Common\GoogleSigningDirective\google-plus-signin.css" />
+    <Content Include="Common\GoogleSigningDirective\google-plus-signin.js" />
     <Content Include="Common\Material\1.0.2\angular-material.css" />
     <Content Include="Common\Material\1.0.2\angular-material.layouts.css" />
     <Content Include="Common\Material\1.0.2\angular-material.min.js" />
@@ -41,6 +43,8 @@
     <Content Include="Components\FoodList\NewFoodListItemTemplate.html" />
     <Content Include="Components\Home\Home.html" />
     <Content Include="Components\Home\HomeController.js" />
+    <Content Include="Components\Login\Login.html" />
+    <Content Include="Components\Login\LoginController.js" />
     <Content Include="index.html" />
     <Content Include="indexController.js" />
     <Content Include="initModule.js" />

@@ -4,13 +4,14 @@
     angular.module("FoodList")
         .controller("HomeController", HomeController);
 
-    HomeController.$inject = ["$q","WebApiService"];
+    HomeController.$inject = ["$q","$state","WebApiService"];
 
-    function HomeController($q, WebApiService) {
+    function HomeController($q, $state, WebApiService) {
         var vm = this;
         vm.testVar = null;
 
         vm.init = init;
+        vm.btnSignIn_Clicked = btnSignIn_Clicked;
         //init
         vm.init().then(function(initResults) {
             vm.testVar = initResults.testString;
@@ -31,6 +32,10 @@
                 });
 
             return deferred.promise;
+        }
+
+        function btnSignIn_Clicked() {
+            $state.go("Login");
         }
     }
 })()
