@@ -4,14 +4,21 @@
     angular.module("FoodList")
         .controller("LoginController", LoginController);
 
-    LoginController.$inject = [];
+    LoginController.$inject = ["UserService"];
 
-    function LoginController() {
+    function LoginController(UserService) {
         var vm = this;
 
         vm.authenticate = authenticate;
 
-        //functions
+        function authenticate(provider) {
+            var authPromise = null;
 
+            authPromise = UserService.authenticate(provider);
+
+            authPromise.then(function(authenticatedUser) {
+                authenticatedUser;
+            });
+        }
     }
 })()

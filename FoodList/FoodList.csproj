@@ -32,8 +32,10 @@
     <Content Include="Common\Material\1.0.8\angular-material.css" />
     <Content Include="Common\Material\1.0.8\angular-material.min.js" />
     <Content Include="Common\Model\Model.js" />
+    <Content Include="Common\Satellizer\0.14.0\satellizer.js" />
     <Content Include="Common\Satellizer\0.14.0\satellizer.min.js" />
     <Content Include="Common\Services\CommonFunctionsService.js" />
+    <Content Include="Common\Services\UserService.js" />
     <Content Include="Common\Services\WebApiService.js" />
     <Content Include="Common\UIRouter\0.2.18\angular-ui-router.min.js" />
     <Content Include="Common\Underscore\1.8.3\underscore-min.js" />
@@ -53,6 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Common\Model\Model.js.map" />
+    <Content Include="Common\Satellizer\0.14.0\satellizer.min.js.map">
+      <DependentUpon>satellizer.min.js</DependentUpon>
+    </Content>
     <None Include="FoodList.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

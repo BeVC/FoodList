@@ -20,9 +20,14 @@
         <div flex layout-sm="column" ng-controller="IndexController as indexCtrl">
             <md-sidenav md-component-id="left" class="md-sidenav-left">
                 <md-content layout-padding>
-                    <md-button class="md-primary" ui-sref="FoodList" ng-click="indexCtrl.closeSideNavLeft()">
-                        Pantry
-                    </md-button>
+                    <div layout="column">
+                        <md-button class="md-primary" ui-sref="Login" ng-click="indexCtrl.closeSideNavLeft()">
+                            Login
+                        </md-button>
+                        <md-button class="md-primary" ui-sref="FoodList" ng-click="indexCtrl.closeSideNavLeft()">
+                            Pantry
+                        </md-button>
+                    </div>
                 </md-content>
             </md-sidenav>
 
@@ -79,9 +84,6 @@
     <!--Underscore.js-->
     <script src="Common/Underscore/1.8.3/underscore-min.js"></script>
 
-    <!--Satellizer-->
-    <!--<script src="Common/Satellizer/0.14.0/satellizer.min.js"></script>-->
-
     <!--Model-->
     <script src="Common/Model/Model.js"></script>
 
@@ -98,5 +100,6 @@
     <!--Services-->
     <script src="Common/Services/CommonFunctionsService.js"></script>
     <script src="Common/Services/WebApiService.js"></script>
+    <script src="Common/Services/UserService.js"></script>
 </body>
 </html>

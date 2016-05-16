@@ -30,8 +30,12 @@
                     url: "/Login",
                     templateUrl: "Components/Login/Login.html",
                     controller: "LoginController",
-                    controllerAs: "loginCtrl"
+                    controllerAs: "loginCtrl",
                 });
+
+            //$authProvider.google({
+            //    clientId: "695688707541-5edk1nvnhans8vvepb6g05v9f88snekj.apps.googleusercontent.com"
+            //});
         })
         .run(function () {
 
