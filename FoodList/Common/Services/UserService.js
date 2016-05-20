@@ -97,7 +97,7 @@ function UserService($q, Azureservice) {
             userInfoPromise = self.createResolvedPromise(null);
 
         userInfoPromise.then(function (userInfo) {
-
+            userInfo;
         })
 
         return deferred.promise;
@@ -111,8 +111,14 @@ function UserService($q, Azureservice) {
         *    http://blogs.msdn.com/b/carlosfigueira/archive/2013/12/16/enhanced-users-feature-in-azure-mobile-services.aspx
         *    http://blogs.msdn.com/b/carlosfigueira/archive/2013/12/12/expanded-login-scopes-in-azure-mobile-services.aspx             
         */
+        var tableName = "userInfo" + provider;
 
-
+        Azureservice.query(tableName).then(function(userInfo) {
+            deferred.resolve(userInfo);
+            console.log("Query successfull");
+        }, function(err) {
+            console.error("Azure Error: " + err);
+        });
 
         return deferred.promise;
     }
