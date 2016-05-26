@@ -15,6 +15,7 @@
         //init
         vm.init().then(function(initResults) {
             vm.testVar = initResults.testString;
+            vm.foodStorage = initResults.foodStorage;
         });
 
         //functions
@@ -22,13 +23,15 @@
             var deferred = $q.defer();
 
             var promise1 = WebApiService.getTestString();
+            var promise2 = WebApiService.getFoodStorage();
 
-            $q.all([promise1])
+            $q.all([promise1, promise2])
                 .then(function(result) {
-                    var initRresults = {
-                        testString: result[0]
+                    var initResults = {
+                        testString: result[0],
+                        foodStorage: result[1]
                     }
-                    deferred.resolve(initRresults);
+                    deferred.resolve(initResults);
                 });
 
             return deferred.promise;

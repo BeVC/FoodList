@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FoodListModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="partyId" Type="nvarchar" MaxLength="50" />
+          <Property Name="provider" Type="nvarchar" MaxLength="50" />
+          <Property Name="token" Type="nvarchar" MaxLength="50" />
+          <Property Name="jsonUserInfo" Type="nvarchar(max)" />
+          <Property Name="__deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="foodStorage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="amount" Type="tinyint" />
+          <Property Name="persons" Type="tinyint" />
+          <Property Name="dateStorage" Type="date" />
+          <Property Name="present" Type="bit" Nullable="false" />
+          <Property Name="createdAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="updatedAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="deletedAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="party">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="pantryId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userInfoGoogle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="__deleted" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="FoodListModelStoreContainer">
+          <EntitySet Name="account" EntityType="Self.account" Schema="bvcmobsvc" store:Type="Tables" />
+          <EntitySet Name="foodStorage" EntityType="Self.foodStorage" Schema="bvcmobsvc" store:Type="Tables" />
+          <EntitySet Name="party" EntityType="Self.party" Schema="bvcmobsvc" store:Type="Tables" />
+          <EntitySet Name="userInfoGoogle" EntityType="Self.userInfoGoogle" Schema="bvcmobsvc" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoodListModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="partyId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="provider" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="jsonUserInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="C__deleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="foodStorage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amount" Type="Byte" />
+          <Property Name="persons" Type="Byte" />
+          <Property Name="dateStorage" Type="DateTime" Precision="0" />
+          <Property Name="present" Type="Boolean" Nullable="false" />
+          <Property Name="createdAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="updatedAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="deletedAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="party">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pantryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="userInfoGoogle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C__deleted" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="bvcMobSvc_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="account" EntityType="Self.account" />
+          <EntitySet Name="foodStorage" EntityType="Self.foodStorage" />
+          <EntitySet Name="party" EntityType="Self.party" />
+          <EntitySet Name="userInfoGoogle" EntityType="Self.userInfoGoogle" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoodListModelStoreContainer" CdmEntityContainer="bvcMobSvc_dbEntities">
+          <EntitySetMapping Name="account">
+            <EntityTypeMapping TypeName="FoodListModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="partyId" ColumnName="partyId" />
+                <ScalarProperty Name="provider" ColumnName="provider" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="jsonUserInfo" ColumnName="jsonUserInfo" />
+                <ScalarProperty Name="C__deleted" ColumnName="__deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="foodStorage">
+            <EntityTypeMapping TypeName="FoodListModel.foodStorage">
+              <MappingFragment StoreEntitySet="foodStorage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="persons" ColumnName="persons" />
+                <ScalarProperty Name="dateStorage" ColumnName="dateStorage" />
+                <ScalarProperty Name="present" ColumnName="present" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+                <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="party">
+            <EntityTypeMapping TypeName="FoodListModel.party">
+              <MappingFragment StoreEntitySet="party">
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pantryId" ColumnName="pantryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userInfoGoogle">
+            <EntityTypeMapping TypeName="FoodListModel.userInfoGoogle">
+              <MappingFragment StoreEntitySet="userInfoGoogle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="C__deleted" ColumnName="__deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -98,6 +98,7 @@ function UserService($q, Azureservice) {
 
         userInfoPromise.then(function (userInfo) {
             userInfo;
+
         })
 
         return deferred.promise;
