@@ -15,7 +15,8 @@
         //init
         vm.init().then(function(initResults) {
             vm.testVar = initResults.testString;
-            vm.foodStorage = initResults.foodStorage;
+            vm.foodStorage = initResults.foodStorage.foodStorage;
+            vm.count = vm.foodStorage.length;
         });
 
         //functions
