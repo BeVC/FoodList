@@ -133,5 +133,18 @@
         }
 
         //END FOODLIST
+
+        //START ACCOUNT
+
+        this.getAccount = function (provider, userIdProvider) {
+            var request = {
+                provider: provider,
+                token: userIdProvider
+            }
+
+            return this.httpGetPassObject("api/Account", request);
+        }
+
+        //END ACCOUNT
     }
 })()

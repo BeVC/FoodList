@@ -18,6 +18,7 @@
 
             authPromise.then(function(authenticatedUser) {
                 authenticatedUser;
+                //forward to someplace here
             });
         }
     }

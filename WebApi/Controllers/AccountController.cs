@@ -8,13 +8,13 @@ using WebApi.Service;
 
 namespace WebApi.Controllers
 {
-    public class FoodStorageController : ApiController
+    public class AccountController : ApiController
     {
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get([FromUri]AccountRequest request)
         {
-            FoodStorageSvc svc = new FoodStorageSvc();
+            AccountSvc svc = new AccountSvc();
 
-            var result = svc.Get();
+            var result = svc.GetAccount(request);
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }

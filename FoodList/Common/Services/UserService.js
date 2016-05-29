@@ -43,9 +43,9 @@ function AuthenticatedUser(provider, userInfoProvider) {
 angular.module("FoodList")
     .service("UserService", UserService);
 
-UserService.$inject = ["$q", "Azureservice"];
+UserService.$inject = ["$q", "Azureservice", "WebApiService"];
 
-function UserService($q, Azureservice) {
+function UserService($q, Azureservice, WebApiService) {
     "use strict";
 
     this.createResolvedPromise = function (returnValue) {
@@ -82,24 +82,47 @@ function UserService($q, Azureservice) {
         var deferred = $q.defer();
 
         //when completely ready, have API get existing user (if any)
-        var account = null;
-        var userInfoPromise = null;
+        WebApiService.getAccount(provider, userIdProvider)
+            .then(function(accountDb) {
 
-        if (account == null || account.partyId == null) {
-            switch (provider) {
-                case "google":
-                    userInfoPromise = self.getUserInfo(provider);
-                    break;
-            }
-        }
+                var account = accountDb.account;
+                var userInfoPromise = null;
 
-        if (userInfoPromise == null)
-            userInfoPromise = self.createResolvedPromise(null);
+                if (account == null || account.partyId == null) {
+                    switch (provider) {
+                    case "google":
+                        userInfoPromise = self.getUserInfo(provider);
+                        break;
+                    }
+                }
 
-        userInfoPromise.then(function (userInfo) {
-            userInfo;
+                if (userInfoPromise == null)
+                    userInfoPromise = self.createResolvedPromise(null);
 
-        })
+                userInfoPromise.then(function (userInfo) {
+                    console.log(userInfo);
+
+                    var newAccountProm = null;
+
+                    if (account == null) {
+                        var newAccount = {
+                            provider: provider,
+                            token: userIdProvider,
+                            loginName: userInfo.name,
+                            jsonUserInfo: JSON.stringify(userInfo)
+                        }
+
+                        newAccountProm = WebApiService.createAccount(newAccount);
+                    }
+
+                    if (newAccountProm == null)
+                        newAccountProm = self.createResolvedPromise(null);
+
+                    newAccountProm.then(function(newAccountResult) {
+                        newAccountProm;
+                    });
+                });
+            });
 
         return deferred.promise;
     }
@@ -114,10 +137,10 @@ function UserService($q, Azureservice) {
         */
         var tableName = "userInfo" + provider;
 
-        Azureservice.query(tableName).then(function(userInfo) {
+        Azureservice.query(tableName).then(function (userInfo) {
             deferred.resolve(userInfo);
             console.log("Query successfull");
-        }, function(err) {
+        }, function (err) {
             console.error("Azure Error: " + err);
         });
 

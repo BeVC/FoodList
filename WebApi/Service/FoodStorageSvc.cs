@@ -10,18 +10,13 @@ namespace WebApi.Service
     public class FoodStorageSvc
     {
         //public var Db = new bvcMobSvc_dbEntities();
-        private readonly bvcMobSvc_dbEntities db = new bvcMobSvc_dbEntities();
-
-        //public List<foodStorage> Get()
-        //{
-        //    return db.foodStorage.ToList();
-        //}
+        private readonly bvcMobSvc_dbEntities _db = new bvcMobSvc_dbEntities();
 
         public FoodStorageList Get()
         {
             try
             {
-                List<foodStorage> foodStorageList = db.foodStorage.ToList();
+                List<foodStorage> foodStorageList = _db.foodStorage.ToList();
 
                 return new FoodStorageList(foodStorageList, FoodStorageStatus.Success);
             }
@@ -42,15 +37,15 @@ namespace WebApi.Service
     public class FoodStorageList
     {
         [JsonProperty("foodStorage")]
-        public List<foodStorage> FoodStorage { get; set; }
+        private List<foodStorage> FoodStorage { get; set; }
 
-        public FoodStorageStatus Status { get; set; }
+        private FoodStorageStatus Status { get; set; }
 
         public FoodStorageList(FoodStorageStatus status)
         {
             Status = status;
 
-            Status.ToString();
+            //Status.ToString();
         }
 
         public FoodStorageList(List<foodStorage> foodStorage, FoodStorageStatus status)
@@ -58,7 +53,7 @@ namespace WebApi.Service
             FoodStorage = foodStorage;
             Status = status;
 
-            Status.ToString();
+            //Status.ToString();
         }
 
     }
