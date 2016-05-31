@@ -33,6 +33,22 @@ namespace WebApi.Service
             }
         }
 
+        public AccountResult CreateAccount(account newAccount)
+        {
+            account account = new account
+            {
+                id = Guid.NewGuid().ToString(),
+                provider = newAccount.provider,
+                token = newAccount.token,
+                userName = newAccount.userName,
+                jsonUserInfo = newAccount.jsonUserInfo
+            };
+
+            _db.account.Add(account);
+            _db.SaveChanges();
+
+            return new AccountResult(account, AccountStatus.Success);
+        }
     }
 
     public enum AccountStatus

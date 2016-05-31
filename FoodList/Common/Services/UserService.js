@@ -119,7 +119,11 @@ function UserService($q, Azureservice, WebApiService) {
                         newAccountProm = self.createResolvedPromise(null);
 
                     newAccountProm.then(function(newAccountResult) {
-                        newAccountProm;
+                        newAccountResult;
+
+                        if (newAccountResult != null)
+                            account = newAccountResult;
+
                     });
                 });
             });

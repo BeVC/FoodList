@@ -11,6 +11,7 @@
           </Key>
           <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="partyId" Type="nvarchar" MaxLength="50" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" />
           <Property Name="provider" Type="nvarchar" MaxLength="50" />
           <Property Name="token" Type="nvarchar" MaxLength="50" />
           <Property Name="jsonUserInfo" Type="nvarchar(max)" />
@@ -69,6 +70,7 @@
           <Property Name="token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="jsonUserInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="C__deleted" Type="Boolean" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="foodStorage">
           <Key>
@@ -118,6 +120,7 @@
           <EntitySetMapping Name="account">
             <EntityTypeMapping TypeName="FoodListModel.account">
               <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="partyId" ColumnName="partyId" />
                 <ScalarProperty Name="provider" ColumnName="provider" />

@@ -145,6 +145,9 @@
             return this.httpGetPassObject("api/Account", request);
         }
 
+        this.createAccount = function(newAccount) {
+            return this.httpPut("api/Account", newAccount);
+        }
         //END ACCOUNT
     }
 })()

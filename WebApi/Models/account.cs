@@ -20,5 +20,6 @@ namespace WebApi.Models
         public string token { get; set; }
         public string jsonUserInfo { get; set; }
         public Nullable<bool> C__deleted { get; set; }
+        public string userName { get; set; }
     }
 }
