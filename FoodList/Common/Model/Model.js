@@ -36,4 +36,29 @@
     };
     return FoodStorage;
 })();
+
+var Party = (function () {
+    function Party() {
+        this.firstName = null;
+        this.lastName = null;
+        this.name = null;
+        this.pantryId = null;
+    }
+    Party.createCopy = function (obj, copyId) {
+        var copy = new Party();
+        Party.copyProperties(obj, copy, copyId);
+        return copy;
+    };
+
+    Party.copyProperties = function (from, to, copyId) {
+        if (copyId && from.id)
+            to.id = from.id;
+
+        to.firstName = from.firstName;
+        to.lastName = from.lastName;
+        to.name = from.name;
+        to.pantryId = from.pantryId;
+    };
+    return Party;
+})();
 //# sourceMappingURL=Model.js.map

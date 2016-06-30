@@ -4,9 +4,9 @@
     angular.module("FoodList")
         .controller("LoginController", LoginController);
 
-    LoginController.$inject = ["UserService"];
+    LoginController.$inject = ["$state", "UserService"];
 
-    function LoginController(UserService) {
+    function LoginController($state, UserService) {
         var vm = this;
 
         vm.authenticate = authenticate;
@@ -19,6 +19,11 @@
             authPromise.then(function(authenticatedUser) {
                 authenticatedUser;
                 //forward to someplace here
+                if (authenticatedUser.account.partyId != null /*SessionService.userIsLoggedIn() &&  !authenticatedUser.account.isDeleted*/) {
+                    //something
+                } else {
+                    $state.go("Party");
+                }
             });
         }
     }

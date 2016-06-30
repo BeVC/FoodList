@@ -149,5 +149,13 @@
             return this.httpPut("api/Account", newAccount);
         }
         //END ACCOUNT
+
+        //START PARTY
+
+        this.createParty = function(newParty) {
+            return this.httpPut("api/Party", newParty);
+        }
+
+        //END PARTY
     }
 })()

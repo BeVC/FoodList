@@ -1,0 +1,22 @@
+﻿<div layout="column">
+    <md-content layout-padding>
+        <div>
+            <form name="partyFormCtrl.partyForm">
+                <md-input-container class="md-block">
+                    <label>First Name</label>
+                    <input ng-model="partyFormCtrl.party.firstName" ng-change="partyFormCtrl.setFullName()" ng-model-options="{updateOn: 'blur'}" />
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Last Name</label>
+                    <input ng-model="partyFormCtrl.party.lastName" ng-change="partyFormCtrl.setFullName()" ng-model-options="{updateOn: 'blur'}" />
+                </md-input-container>
+            </form>
+        </div>
+    </md-content>
+    <md-button class="md-fab md-primary md-fab-bottom-right" aria-label="Save" ng-click="partyFormCtrl.btnSaveUpdateParty_Clicked()" style="position: fixed">
+        <md-icon>
+            <i class="material-icons">Save</i>
+        </md-icon>
+    </md-button>
+</div>

@@ -1,5 +1,7 @@
 ﻿//authenticatedUser-Object
-function AuthenticatedUser(provider, userInfoProvider) {
+function AuthenticatedUser(account, publicParty, provider, userInfoProvider) {
+    this.account = account;
+    this.publicParty = publicParty;
     this.provider = provider;
     this.userInfoProvider = userInfoProvider;
 
@@ -122,12 +124,22 @@ function UserService($q, Azureservice, WebApiService) {
                         newAccountResult;
 
                         if (newAccountResult != null)
-                            account = newAccountResult;
+                            account = newAccountResult.account;
 
+                        var publicParty = null;
+
+                        if (account != null && typeof account.party !== "undefined" && account.party != null) {
+                            publicParty = account.party;
+                        }
+
+                        var authenticatedUser = new AuthenticatedUser(account, publicParty, provider, userInfo);
+
+                        deferred.resolve(authenticatedUser);
                     });
                 });
+            }, function (err) {
+                console.error('Azure Error: ' + err);
             });
-
         return deferred.promise;
     }
 
@@ -149,5 +161,9 @@ function UserService($q, Azureservice, WebApiService) {
         });
 
         return deferred.promise;
+    }
+
+    this.setAuthenticatedUser = function(authenticatedUser) {
+        //SessionService.setAuthenticatedUser(authenticatedUser);
     }
 }

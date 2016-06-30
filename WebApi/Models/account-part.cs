@@ -8,7 +8,8 @@ namespace WebApi.Models
 {
     public partial class account
     {
+        //[JsonProperty("party")]
         [JsonIgnore]
-        public virtual ICollection<party> Party { get; set; }
+        public virtual ICollection<party> party { get; set; }
     }
 }
