@@ -35,10 +35,12 @@
     <Content Include="Common\Satellizer\0.14.0\satellizer.js" />
     <Content Include="Common\Satellizer\0.14.0\satellizer.min.js" />
     <Content Include="Common\Services\CommonFunctionsService.js" />
+    <Content Include="Common\Services\SessionService.js" />
     <Content Include="Common\Services\UserService.js" />
     <Content Include="Common\Services\WebApiService.js" />
     <Content Include="Common\UIRouter\0.2.18\angular-ui-router.min.js" />
     <Content Include="Common\Underscore\1.8.3\underscore-min.js" />
+    <Content Include="Common\Varia\AuthenticatedUser.js" />
     <Content Include="Components\FoodList\FoodList.html" />
     <Content Include="Components\FoodList\FoodListController.js" />
     <Content Include="Components\FoodList\NewFoodListController.js" />
@@ -71,6 +73,7 @@
   <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="Common\Model\Model.ts" />
+    <TypeScriptCompile Include="Common\Varia\AuthenticatedUser.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

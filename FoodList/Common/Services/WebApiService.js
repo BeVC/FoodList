@@ -148,6 +148,10 @@
         this.createAccount = function(newAccount) {
             return this.httpPut("api/Account", newAccount);
         }
+
+        this.updateAccount = function(account) {
+            return this.httpPost("api/Account", account);
+        }
         //END ACCOUNT
 
         //START PARTY

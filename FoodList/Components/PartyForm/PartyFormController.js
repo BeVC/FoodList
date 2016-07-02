@@ -4,9 +4,9 @@
     angular.module("FoodList")
         .controller("PartyFormController", PartyFormController);
 
-    PartyFormController.$inject = ["Azureservice", "CommonFunctionsService", "WebApiService"];
+    PartyFormController.$inject = ["Azureservice", "CommonFunctionsService", "SessionService","WebApiService"];
 
-    function PartyFormController(Azureservice, CommonFunctionsService, WebApiService) {
+    function PartyFormController(Azureservice, CommonFunctionsService, SessionService, WebApiService) {
         var vm = this;
         vm.party = null;
 
@@ -24,7 +24,16 @@
                     if (typeof partyForBackend.id === "undefined" || partyForBackend.id == null) {
                         WebApiService.createParty(partyForBackend)
                             .then(function(result) {
-                            result;
+                                if (result.status === 1) {
+                                    var account = SessionService.getAuthUserAccount();
+                                    account.partyId = result.party.id;
+                                    WebApiService.updateAccount(account)
+                                        .then(function(result) {
+                                            if (result.status === 1) {
+                                                SessionService.setAuthUserAccount(result.account);
+                                            }
+                                        });
+                                }
                         });
                     } else {
                         

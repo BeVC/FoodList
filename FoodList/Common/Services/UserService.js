@@ -1,53 +1,53 @@
 ﻿//authenticatedUser-Object
-function AuthenticatedUser(account, publicParty, provider, userInfoProvider) {
-    this.account = account;
-    this.publicParty = publicParty;
-    this.provider = provider;
-    this.userInfoProvider = userInfoProvider;
+//function AuthenticatedUser(account, publicParty, provider, userInfoProvider) {
+//    this.account = account;
+//    this.publicParty = publicParty;
+//    this.provider = provider;
+//    this.userInfoProvider = userInfoProvider;
 
-    this.initPartyFromUserInfoProvider = function () {
-        var party = {} //needs to become object in model.js
+//    this.initPartyFromUserInfoProvider = function () {
+//        var party = {} //needs to become object in model.js
 
-        switch (provider) {
-            case 'google':
-                if (typeof userInfoProvider.given_name !== "undefined")
-                    party.firstName = userInfoProvider.given_name;
+//        switch (provider) {
+//            case 'google':
+//                if (typeof userInfoProvider.given_name !== "undefined")
+//                    party.firstName = userInfoProvider.given_name;
 
-                if (typeof userInfoProvider.family_name !== 'undefined')
-                    party.lastName = userInfoProvider.family_name;
+//                if (typeof userInfoProvider.family_name !== 'undefined')
+//                    party.lastName = userInfoProvider.family_name;
 
-                if (typeof userInfoProvider.name !== 'undefined')
-                    party.name = userInfoProvider.name;
+//                if (typeof userInfoProvider.name !== 'undefined')
+//                    party.name = userInfoProvider.name;
 
-                if (typeof userInfoProvider.email !== 'undefined')
-                    party.email = userInfoProvider.email;
+//                if (typeof userInfoProvider.email !== 'undefined')
+//                    party.email = userInfoProvider.email;
 
-                if (typeof userInfoProvider.gender !== 'undefined')
-                    party.gender = userInfoProvider.gender;
+//                if (typeof userInfoProvider.gender !== 'undefined')
+//                    party.gender = userInfoProvider.gender;
 
-                if (typeof userInfoProvider.locale !== 'undefined') {
+//                if (typeof userInfoProvider.locale !== 'undefined') {
 
-                    if (userInfoProvider.locale.length >= 2) {
-                        party.language = userInfoProvider.locale.substring(0, 2);
-                    }
+//                    if (userInfoProvider.locale.length >= 2) {
+//                        party.language = userInfoProvider.locale.substring(0, 2);
+//                    }
 
-                    if (userInfoProvider.locale.length >= 5) {
-                        party.countryCode = userInfoProvider.locale.substring(3, 5);
-                    }
-                }
-                break;
-        }
-        return party;
-    }
-}
+//                    if (userInfoProvider.locale.length >= 5) {
+//                        party.countryCode = userInfoProvider.locale.substring(3, 5);
+//                    }
+//                }
+//                break;
+//        }
+//        return party;
+//    }
+//}
 
 //UserService
 angular.module("FoodList")
     .service("UserService", UserService);
 
-UserService.$inject = ["$q", "Azureservice", "WebApiService"];
+UserService.$inject = ["$q", "Azureservice", "SessionService", "WebApiService"];
 
-function UserService($q, Azureservice, WebApiService) {
+function UserService($q, Azureservice, SessionService,WebApiService) {
     "use strict";
 
     this.createResolvedPromise = function (returnValue) {
@@ -110,7 +110,7 @@ function UserService($q, Azureservice, WebApiService) {
                         var newAccount = {
                             provider: provider,
                             token: userIdProvider,
-                            loginName: userInfo.name,
+                            userName: userInfo.name,
                             jsonUserInfo: JSON.stringify(userInfo)
                         }
 
@@ -164,6 +164,6 @@ function UserService($q, Azureservice, WebApiService) {
     }
 
     this.setAuthenticatedUser = function(authenticatedUser) {
-        //SessionService.setAuthenticatedUser(authenticatedUser);
+        SessionService.setAuthenticatedUser(authenticatedUser);
     }
 }

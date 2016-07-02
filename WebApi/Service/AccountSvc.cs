@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
@@ -13,19 +14,18 @@ namespace WebApi.Service
 
         public AccountResult GetAccount(AccountRequest request)
         {
-            account accountDb = null;
             try
             {
-                if (string.IsNullOrWhiteSpace(request.Provider)||string.IsNullOrWhiteSpace(request.Token))
+                if (string.IsNullOrWhiteSpace(request.Provider) || string.IsNullOrWhiteSpace(request.Token))
                     return new AccountResult(AccountStatus.ErrorInRequest);
 
                 //get account based on provider and token
 
-                accountDb = _db.account.FirstOrDefault(a => a.provider == request.Provider && a.token == request.Token);
+                var accountDb = _db.account.FirstOrDefault(a => a.provider == request.Provider && a.token == request.Token);
 
                 //get party linked to account (if any).
 
-                return new AccountResult(accountDb, AccountStatus.Success);
+                return new AccountResult(accountDb);
             }
             catch (Exception ex)
             {
@@ -35,19 +35,55 @@ namespace WebApi.Service
 
         public AccountResult CreateAccount(account newAccount)
         {
-            account account = new account
+            try
             {
-                id = Guid.NewGuid().ToString(),
-                provider = newAccount.provider,
-                token = newAccount.token,
-                userName = newAccount.userName,
-                jsonUserInfo = newAccount.jsonUserInfo
-            };
+                if (newAccount == null)
+                    return new AccountResult(AccountStatus.ErrorInRequest);
 
-            _db.account.Add(account);
-            _db.SaveChanges();
+                account account = new account
+                {
+                    id = Guid.NewGuid().ToString(),
+                    provider = newAccount.provider,
+                    token = newAccount.token,
+                    userName = newAccount.userName,
+                    jsonUserInfo = newAccount.jsonUserInfo
+                };
 
-            return new AccountResult(account, AccountStatus.Success);
+                _db.account.Add(account);
+                _db.SaveChanges();
+
+                return new AccountResult(account);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public AccountResult UpdateAccount(account account)
+        {
+            try
+            {
+                if (account == null)
+                    return new AccountResult(AccountStatus.ErrorInRequest);
+
+                var accountDb = _db.account.FirstOrDefault(a => a.id == account.id);
+
+                if (accountDb != null)
+                {
+                    accountDb.partyId = account.partyId;
+
+                    _db.Entry(accountDb).State = EntityState.Modified;
+                    _db.SaveChanges();
+
+                    return new AccountResult(accountDb);
+                }else
+                    return new AccountResult(AccountStatus.Error);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 
@@ -71,19 +107,23 @@ namespace WebApi.Service
         [JsonProperty("account")]
         private account Account { get; set; }
 
+        [JsonProperty("status")]
         private AccountStatus Status { get; set; }
+
+        [JsonProperty("statusMessage")]
+        private string StatusMessage { get; set; }
 
         public AccountResult(AccountStatus status)
         {
             Status = status;
-            //Status.ToString();
+            StatusMessage = Status.ToString();
         }
 
-        public AccountResult(account account, AccountStatus status)
+        public AccountResult(account account)
         {
             Account = account;
-            Status = status;
-            //Status.ToString();
+            Status = AccountStatus.Success;
+            StatusMessage = Status.ToString();
         }
     }
 }
