@@ -4,13 +4,16 @@
     angular.module("FoodList")
         .controller("LoginController", LoginController);
 
-    LoginController.$inject = ["$state", "UserService"];
+    LoginController.$inject = ["$state","SessionService", "UserService"];
 
-    function LoginController($state, UserService) {
+    function LoginController($state,SessionService, UserService) {
         var vm = this;
 
         vm.authenticate = authenticate;
+        vm.userIsLoggedIn = userIsLoggedIn;
+        vm.btnLogoutUser_Clicked = btnLogoutUser_Clicked;
 
+        //functions
         function authenticate(provider) {
             var authPromise = null;
 
@@ -27,6 +30,16 @@
                     $state.go("Party");
                 }
             });
+        }
+
+        function userIsLoggedIn() {
+            return SessionService.userIsLoggedIn();
+        }
+
+        function btnLogoutUser_Clicked() {
+            UserService.logOut();
+            SessionService.setAuthUserPublicParty(null);
+            $state.go("Home");
         }
     }
 })()

@@ -47,7 +47,7 @@ angular.module("FoodList")
 
 UserService.$inject = ["$q", "Azureservice", "SessionService", "WebApiService"];
 
-function UserService($q, Azureservice, SessionService,WebApiService) {
+function UserService($q, Azureservice, SessionService, WebApiService) {
     "use strict";
 
     this.createResolvedPromise = function (returnValue) {
@@ -85,16 +85,16 @@ function UserService($q, Azureservice, SessionService,WebApiService) {
 
         //when completely ready, have API get existing user (if any)
         WebApiService.getAccount(provider, userIdProvider)
-            .then(function(accountDb) {
+            .then(function (accountDb) {
 
                 var account = accountDb.account;
                 var userInfoPromise = null;
 
                 if (account == null || account.partyId == null) {
                     switch (provider) {
-                    case "google":
-                        userInfoPromise = self.getUserInfo(provider);
-                        break;
+                        case "google":
+                            userInfoPromise = self.getUserInfo(provider);
+                            break;
                     }
                 }
 
@@ -120,7 +120,7 @@ function UserService($q, Azureservice, SessionService,WebApiService) {
                     if (newAccountProm == null)
                         newAccountProm = self.createResolvedPromise(null);
 
-                    newAccountProm.then(function(newAccountResult) {
+                    newAccountProm.then(function (newAccountResult) {
                         newAccountResult;
 
                         if (newAccountResult != null)
@@ -133,6 +133,8 @@ function UserService($q, Azureservice, SessionService,WebApiService) {
                         }
 
                         var authenticatedUser = new AuthenticatedUser(account, publicParty, provider, userInfo);
+                        if (typeof userInfo !== "undefined" && userInfo != null)
+                            authenticatedUser.publicParty = authenticatedUser.initPartyFromUserInfoProvider();
 
                         deferred.resolve(authenticatedUser);
                     });
@@ -163,7 +165,13 @@ function UserService($q, Azureservice, SessionService,WebApiService) {
         return deferred.promise;
     }
 
-    this.setAuthenticatedUser = function(authenticatedUser) {
+    this.setAuthenticatedUser = function (authenticatedUser) {
         SessionService.setAuthenticatedUser(authenticatedUser);
+    }
+
+    this.logOut = function() {
+        Azureservice.logout();
+        SessionService.setAuthenticatedUser(null);
+        //$rootScope.$broadcast("userAuthenticated",null);
     }
 }

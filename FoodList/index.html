@@ -26,13 +26,13 @@
                         <md-button class="md-primary" ui-sref="Login" ng-click="indexCtrl.closeSideNavLeft()" ng-show="!indexCtrl.userIsLoggedIn()">
                             Login
                         </md-button>
-                        <md-button class="md-primary" ng-click="indexCtrl.closeSideNavLeft()" ng-show="indexCtrl.userIsLoggedIn()">
+                        <md-button class="md-primary" ui-sref="Login" ng-click="indexCtrl.closeSideNavLeft()" ng-show="indexCtrl.userIsLoggedIn()">
                             Logout
                         </md-button>
                         <md-button class="md-primary" ui-sref="FoodList" ng-click="indexCtrl.closeSideNavLeft()">
                             Pantry
                         </md-button>
-                        <md-button class="md-primary" ui-sref="Party" ng-click="indexCtrl.closeSideNavLeft()">
+                        <md-button class="md-primary" ng-click="indexCtrl.closeSideNavLeft()" ng-show="indexCtrl.userIsLoggedIn()">
                             Personal
                         </md-button>
                     </div>
