@@ -37,6 +37,35 @@
     return FoodStorage;
 })();
 
+var PantryLocation = (function () {
+    function PantryLocation() {
+        this.name = null;
+        this.pantryId = null;
+        this.createdAt = new Date();
+        this.updatedAt = null;
+        this.deletedAt = null;
+        this.isDeleted = false;
+    }
+    PantryLocation.createCopy = function (obj, copyId) {
+        var copy = new PantryLocation();
+        PantryLocation.copyProperties(obj, copy, copyId);
+        return copy;
+    };
+
+    PantryLocation.copyProperties = function (from, to, copyId) {
+        if (copyId && from.id)
+            to.id = from.id;
+
+        to.name = from.name;
+        to.pantryId = from.pantryId;
+        to.createdAt = from.createdAt;
+        to.updatedAt = from.updatedAt;
+        to.deletedAt = from.deletedAt;
+        to.isDeleted = from.isDeleted;
+    };
+    return PantryLocation;
+})();
+
 var Party = (function () {
     function Party() {
         this.firstName = null;

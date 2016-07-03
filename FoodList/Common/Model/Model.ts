@@ -49,6 +49,43 @@
     }
 }
 
+class PantryLocation {
+    id: string;
+    name: string;
+    pantryId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date;
+    isDeleted: boolean;
+    
+    constructor() {
+        this.name = null;
+        this.pantryId = null;
+        this.createdAt = new Date();
+        this.updatedAt = null;
+        this.deletedAt = null;
+        this.isDeleted = false;
+    }    
+
+    static createCopy(obj: PantryLocation, copyId: boolean): PantryLocation {
+        var copy = new PantryLocation();
+        PantryLocation.copyProperties(obj, copy, copyId);
+        return copy;
+    }
+
+    static copyProperties(from: PantryLocation, to: PantryLocation, copyId: boolean) {
+        if (copyId && from.id)
+            to.id = from.id;
+
+        to.name = from.name;
+        to.pantryId = from.pantryId;
+        to.createdAt = from.createdAt;
+        to.updatedAt = from.updatedAt;
+        to.deletedAt = from.deletedAt;
+        to.isDeleted = from.isDeleted;
+    }
+}
+
 class Party {
     id: string;
     firstName: string;

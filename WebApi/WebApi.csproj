@@ -194,6 +194,9 @@
     <Compile Include="Models\foodStorage.cs">
       <DependentUpon>FoodListModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\pantryLocation.cs">
+      <DependentUpon>FoodListModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\party.cs">
       <DependentUpon>FoodListModel.tt</DependentUpon>
     </Compile>

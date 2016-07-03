@@ -33,6 +33,18 @@
           <Property Name="deletedAt" Type="datetimeoffset" Precision="7" />
           <Property Name="isDeleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="pantryLocation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="pantryId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="createdAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="updatedAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="deletedAt" Type="datetimeoffset" Precision="7" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="party">
           <Key>
             <PropertyRef Name="id" />
@@ -53,6 +65,7 @@
         <EntityContainer Name="FoodListModelStoreContainer">
           <EntitySet Name="account" EntityType="Self.account" Schema="bvcmobsvc" store:Type="Tables" />
           <EntitySet Name="foodStorage" EntityType="Self.foodStorage" Schema="bvcmobsvc" store:Type="Tables" />
+          <EntitySet Name="pantryLocation" EntityType="Self.pantryLocation" Schema="bvcmobsvc" store:Type="Tables" />
           <EntitySet Name="party" EntityType="Self.party" Schema="bvcmobsvc" store:Type="Tables" />
           <EntitySet Name="userInfoGoogle" EntityType="Self.userInfoGoogle" Schema="bvcmobsvc" store:Type="Tables" />
         </EntityContainer>
@@ -110,7 +123,20 @@
           <EntitySet Name="foodStorage" EntityType="Self.foodStorage" />
           <EntitySet Name="party" EntityType="Self.party" />
           <EntitySet Name="userInfoGoogle" EntityType="Self.userInfoGoogle" />
+          <EntitySet Name="pantryLocation" EntityType="FoodListModel.pantryLocation" />
         </EntityContainer>
+        <EntityType Name="pantryLocation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pantryId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="createdAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="updatedAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="deletedAt" Type="DateTimeOffset" Precision="7" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -163,6 +189,19 @@
               <MappingFragment StoreEntitySet="userInfoGoogle">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="C__deleted" ColumnName="__deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pantryLocation">
+            <EntityTypeMapping TypeName="FoodListModel.pantryLocation">
+              <MappingFragment StoreEntitySet="pantryLocation">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="deletedAt" ColumnName="deletedAt" />
+                <ScalarProperty Name="updatedAt" ColumnName="updatedAt" />
+                <ScalarProperty Name="createdAt" ColumnName="createdAt" />
+                <ScalarProperty Name="pantryId" ColumnName="pantryId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

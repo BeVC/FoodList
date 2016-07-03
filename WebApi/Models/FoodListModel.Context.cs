@@ -29,5 +29,6 @@ namespace WebApi.Models
         public virtual DbSet<foodStorage> foodStorage { get; set; }
         public virtual DbSet<party> party { get; set; }
         public virtual DbSet<userInfoGoogle> userInfoGoogle { get; set; }
+        public virtual DbSet<pantryLocation> pantryLocation { get; set; }
     }
 }
