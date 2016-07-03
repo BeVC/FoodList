@@ -24,6 +24,11 @@ namespace WebApi.Service
                 var accountDb = _db.account.FirstOrDefault(a => a.provider == request.Provider && a.token == request.Token);
 
                 //get party linked to account (if any).
+                if (accountDb != null && !string.IsNullOrWhiteSpace(accountDb.partyId))
+                {
+                    party partyDb = _db.party.FirstOrDefault(p => p.id == accountDb.partyId);
+                    accountDb.party = partyDb;
+                }
 
                 return new AccountResult(accountDb);
             }
@@ -77,7 +82,8 @@ namespace WebApi.Service
                     _db.SaveChanges();
 
                     return new AccountResult(accountDb);
-                }else
+                }
+                else
                     return new AccountResult(AccountStatus.Error);
             }
             catch (Exception ex)

@@ -16,7 +16,7 @@
 
             var jsonObject = JSON.stringify(obj);
 
-            $http.put("http://localhost:61710/" + relativeUrl, jsonObject)
+            $http.put("http://localhost:5051/" + relativeUrl, jsonObject)
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 })
@@ -33,7 +33,7 @@
 
             var jsonObject = JSON.stringify(obj);
 
-            $http.post("http://localhost:61710/" + relativeUrl, jsonObject)
+            $http.post("http://localhost:5051/" + relativeUrl, jsonObject)
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 })
@@ -48,7 +48,7 @@
         this.httpDelete = function (relativeUrl, id) {
             var deferred = $q.defer();
 
-            $http.post("http://localhost:61710/" + relativeUrl + "?id=" + id)
+            $http.post("http://localhost:5051/" + relativeUrl + "?id=" + id)
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 })
@@ -63,7 +63,7 @@
         this.httpGet = function (relativeUrl) {
             var deferred = $q.defer();
 
-            $http.get("http://localhost:61710/" + relativeUrl)
+            $http.get("http://localhost:5051/" + relativeUrl)
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 })
@@ -78,7 +78,7 @@
         this.httpGetById = function (relativeUrl, id) {
             var deferred = $q.defer();
 
-            $http.get("http://localhost:61710/" + relativeUrl + "?id=" + id)
+            $http.get("http://localhost:5051/" + relativeUrl + "?id=" + id)
                 .success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 })
@@ -94,7 +94,7 @@
             var deferred = $q.defer();
 
             $http({
-                url: "http://localhost:61710/" + relativeUrl,
+                url: "http://localhost:5051/" + relativeUrl,
                 method: "GET",
                 params: request
             })
@@ -113,7 +113,7 @@
         this.getTestString = function () {
             //var deferred = $q.defer();
 
-            //$http.get("http://localhost:61710/" + "api/Test")
+            //$http.get("http://localhost:5051/" + "api/Test")
             //    .success(function (data, status, headers, config) {
             //        deferred.resolve(data);
             //    })

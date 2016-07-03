@@ -21,8 +21,13 @@
             <md-sidenav md-component-id="left" class="md-sidenav-left">
                 <md-content layout-padding>
                     <div layout="column">
-                        <md-button class="md-primary" ui-sref="Login" ng-click="indexCtrl.closeSideNavLeft()">
+                        <div><span ng-show="!indexCtrl.userIsLoggedIn()">Not logged in</span><span ng-show="indexCtrl.userIsLoggedIn()">Logged in</span></div>
+
+                        <md-button class="md-primary" ui-sref="Login" ng-click="indexCtrl.closeSideNavLeft()" ng-show="!indexCtrl.userIsLoggedIn()">
                             Login
+                        </md-button>
+                        <md-button class="md-primary" ng-click="indexCtrl.closeSideNavLeft()" ng-show="indexCtrl.userIsLoggedIn()">
+                            Logout
                         </md-button>
                         <md-button class="md-primary" ui-sref="FoodList" ng-click="indexCtrl.closeSideNavLeft()">
                             Pantry

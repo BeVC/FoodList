@@ -27,6 +27,18 @@
         this.getAuthUserPublicParty = function() {
             return this.authenticatedUser.publicParty;
         }
-
+        this.userIsLoggedIn = function() {
+            if (this.authenticatedUser != null && this.authenticatedUser.publicParty != null
+                && this.authenticatedUser.publicParty.id != null && this.authenticatedUser.publicParty.id.length > 0)
+                return true;
+            else
+                return false;
+        }
+        this.userIsAuthenticated = function() {
+            if (this.authenticatedUser != null)
+                return true;
+            else 
+                return false;
+        }
     }
 })()

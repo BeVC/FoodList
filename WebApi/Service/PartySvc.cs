@@ -23,7 +23,8 @@ namespace WebApi.Service
                     id = Guid.NewGuid().ToString(),
                     firstName = newParty.firstName,
                     lastName = newParty.lastName,
-                    name = newParty.name
+                    name = newParty.name,
+                    pantryId = Guid.NewGuid().ToString()
                 };
 
                 _db.party.Add(party);

@@ -4,9 +4,9 @@
     angular.module("FoodList")
         .controller("PartyFormController", PartyFormController);
 
-    PartyFormController.$inject = ["Azureservice", "CommonFunctionsService", "SessionService","WebApiService"];
+    PartyFormController.$inject = ["$state", "Azureservice", "CommonFunctionsService", "SessionService","WebApiService"];
 
-    function PartyFormController(Azureservice, CommonFunctionsService, SessionService, WebApiService) {
+    function PartyFormController($state, Azureservice, CommonFunctionsService, SessionService, WebApiService) {
         var vm = this;
         vm.party = null;
 
@@ -31,6 +31,7 @@
                                         .then(function(result) {
                                             if (result.status === 1) {
                                                 SessionService.setAuthUserAccount(result.account);
+                                                $state.go("Home");
                                             }
                                         });
                                 }

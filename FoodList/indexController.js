@@ -46,13 +46,14 @@
     angular.module("FoodList")
         .controller("IndexController", IndexController);
 
-    IndexController.$inject = ["$mdSidenav"];
+    IndexController.$inject = ["$mdSidenav", "SessionService"];
 
-    function IndexController($mdSidenav) {
+    function IndexController($mdSidenav, SessionService) {
         var vm = this;
 
         vm.toggleSideNavLeft = toggleSideNavLeft;
         vm.closeSideNavLeft = closeSideNavLeft;
+        vm.userIsLoggedIn = userIsLoggedIn;
         //init
 
         //functions
@@ -62,6 +63,10 @@
 
         function closeSideNavLeft() {
             $mdSidenav('left').close();
+        }
+
+        function userIsLoggedIn() {
+            return SessionService.userIsLoggedIn();
         }
     }
 })()

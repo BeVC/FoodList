@@ -17,10 +17,12 @@
             authPromise = UserService.authenticate(provider);
 
             authPromise.then(function(authenticatedUser) {
-                authenticatedUser;
+                //authenticatedUser;
                 //forward to someplace here
-                if (authenticatedUser.account.partyId != null /*SessionService.userIsLoggedIn() &&  !authenticatedUser.account.isDeleted*/) {
-                    //something
+                if (authenticatedUser.account.partyId != null && authenticatedUser.account.party != null /*SessionService.userIsLoggedIn() &&  !authenticatedUser.account.isDeleted*/) {
+                    //set public party to authenticatedUser.publicParty
+                    authenticatedUser.publicParty = authenticatedUser.account.party;
+                    $state.go("Home");
                 } else {
                     $state.go("Party");
                 }
