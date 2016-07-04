@@ -49,6 +49,8 @@
     <Content Include="Components\Home\HomeController.js" />
     <Content Include="Components\Login\Login.html" />
     <Content Include="Components\Login\LoginController.js" />
+    <Content Include="Components\PantryLocation\PantryLocation.html" />
+    <Content Include="Components\PantryLocation\PantryLocationController.js" />
     <Content Include="Components\PartyForm\PartyForm.html" />
     <Content Include="Components\PartyForm\PartyFormController.js" />
     <Content Include="index.html" />

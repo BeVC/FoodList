@@ -161,5 +161,21 @@
         }
 
         //END PARTY
+
+        //START PANTRYLOCATION
+
+        this.createPantryLocation = function(newPantryLocation) {
+            return this.httpPut("api/PantryLocation", newPantryLocation);
+        }
+
+        this.updatePantryLocation = function(pantryLocation) {
+            return this.httpPost("api/PantryLocation", pantryLocation);
+        }
+
+        this.getPantryLocationsByPantryId = function(pantryId) {
+            return this.httpGetById("api/PantryLocation", pantryId);
+        }
+
+        //END PANTRYLOCATION
     }
 })()
