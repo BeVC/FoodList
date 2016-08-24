@@ -13,17 +13,17 @@ namespace WebApi.Controllers
     {
         public HttpResponseMessage Put(pantryLocation newPantryLocation)
         {
-            
+            return null;
         }
 
         public HttpResponseMessage Post(pantryLocation pantryLocation)
         {
-            
+            return null;
         }
 
         public HttpResponseMessage Get(string pantryId)
         {
-            
+            return null;
         }
     }
 }

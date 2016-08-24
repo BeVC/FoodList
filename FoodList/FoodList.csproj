@@ -10,19 +10,18 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Common\Angular\1.4.8\angular.min.js" />
     <Content Include="Common\Angular\1.5.5\angular.min.js" />
     <Content Include="Common\Azure\angular-azure-mobile-service.js" />
-    <Content Include="Common\GoogleSigningDirective\google-plus-signin.css" />
-    <Content Include="Common\GoogleSigningDirective\google-plus-signin.js" />
     <Content Include="Common\Material\1.0.2\angular-material.css" />
     <Content Include="Common\Material\1.0.2\angular-material.layouts.css" />
     <Content Include="Common\Material\1.0.2\angular-material.min.js" />
